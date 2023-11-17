@@ -83,7 +83,15 @@ func (this *AuthorController) Login() {
 	this.Ctx.Request.PostForm.Del("password")
 
 	this.InfoLog("登录成功")
-	this.jsonSuccess("登录成功！", nil, "/main/index")
+	red := "/main/index"
+	reds := this.GetSession("redirect")
+	if reds != nil {
+		switch reds.(type) {
+		case string:
+			red = reds.(string)
+		}
+	}
+	this.jsonSuccess("登录成功！", nil, red)
 }
 
 // auth login
@@ -178,7 +186,7 @@ func (this *AuthorController) AuthLogin() {
 	this.jsonSuccess("登录成功！", nil, "/main/index")
 }
 
-//logout
+// logout
 func (this *AuthorController) Logout() {
 	this.InfoLog("退出成功")
 	passport := beego.AppConfig.String("author::passport")

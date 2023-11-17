@@ -42,6 +42,7 @@ func (this *TemplateController) Prepare() {
 	}
 
 	if !this.isLogin() {
+		this.SetSession("redirect", this.Ctx.Request.RequestURI)
 		if this.IsAjax() {
 			this.JsonError("未登录或登录已失效！", nil, "/author/index")
 		} else {
@@ -63,9 +64,9 @@ func (this *TemplateController) Prepare() {
 // check is login
 func (this *TemplateController) isLogin() bool {
 
-	if this.controllerName == "page" && this.actionName == "display" {
-		return true
-	}
+	//if this.controllerName == "page" && this.actionName == "display" {
+	//	return true
+	//}
 
 	passport := beego.AppConfig.String("author::passport")
 	cookie := this.Ctx.GetCookie(passport)
