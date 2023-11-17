@@ -18,7 +18,8 @@ require (
 	github.com/shirou/gopsutil v2.19.11+incompatible
 	github.com/shirou/w32 v0.0.0-20160930032740-bb4de0191aa4 // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
-	github.com/snail007/go-activerecord v0.0.0-20190813031814-2ac2f3d7cff0
+	github.com/snail007/go-activerecord v0.0.0-20200924131434-90299f3cc8e2
+	//github.com/snail007/go-activerecord v0.0.0-20190813031814-90299f3cc8e215d
 	github.com/stretchr/testify v1.7.1 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect

@@ -132,7 +132,7 @@ func initConfig() {
 	logs.SetLogFuncCall(true)
 }
 
-//init db
+// init db
 func initDB() {
 	host := beego.AppConfig.String("db::host")
 	port, _ := beego.AppConfig.Int("db::port")
@@ -144,8 +144,8 @@ func initDB() {
 	maxConn, _ := beego.AppConfig.Int("db::conn_max_connection")
 	models.G = mysql.NewDBGroup("default")
 	cfg := mysql.NewDBConfigWith(host, port, dbname, user, pass)
-	cfg.SetMaxIdleConns = maxIdle
-	cfg.SetMaxOpenConns = maxConn
+	cfg.MaxIdleConns = maxIdle
+	cfg.MaxOpenConns = maxConn
 	cfg.TablePrefix = dbTablePrefix
 	cfg.TablePrefixSqlIdentifier = "__PREFIX__"
 	err := models.G.Regist("default", cfg)
