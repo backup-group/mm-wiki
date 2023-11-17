@@ -36,7 +36,9 @@ func (this *TemplateController) Prepare() {
 	this.Data["navName"] = this.controllerName
 	this.Data["version"] = app.Version
 	this.Data["copyright"] = app.CopyRight
-
+	// 查找系统名称
+	systemName := models.ConfigModel.GetConfigValueByKey(models.ConfigKeySystemName, "Markdown Mini Wiki")
+	this.Data["system_name"] = systemName
 	if this.controllerName == "author" {
 		return
 	}
@@ -107,9 +109,6 @@ func (this *TemplateController) isLogin() bool {
 	this.User = this.GetSession("author").(map[string]string)
 	this.UserId = this.User["user_id"]
 
-	// 查找系统名称
-	systemName := models.ConfigModel.GetConfigValueByKey(models.ConfigKeySystemName, "Markdown Mini Wiki")
-	this.Data["system_name"] = systemName
 	this.Data["login_user_id"] = this.UserId
 	this.Data["login_username"] = this.User["username"]
 	this.Data["login_role_id"] = this.User["role_id"]
